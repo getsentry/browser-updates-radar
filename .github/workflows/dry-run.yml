@@ -1,0 +1,30 @@
+name: Dry Run — Browser Updates Radar
+
+# Manual-only preview: runs the full pipeline against live sources and prints the
+# per-source health report plus the planned per-topic issue actions. Never opens
+# an issue and never writes state/topics.json. Safe to run as often as you like.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read # read-only: this workflow creates nothing and commits nothing
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Dry run (fetch + live triage + planned actions)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODEL: ${{ vars.MODEL }} # optional override; defaults to claude-sonnet-4-6
+        run: npm run dry-run
