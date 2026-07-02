@@ -1,19 +1,24 @@
 # browser-updates-radar
 
-A weekly GitHub Action that pulls upcoming browser-platform changes from several sources, asks Claude to pick the ones the **Sentry Browser SDK team** should care about, and files them as a single GitHub issue. One issue per week, deduped so nothing repeats — low noise by design.
+A weekly GitHub Action that pulls upcoming browser-platform changes from several sources, asks Claude to pick the ones the **Sentry Browser SDK team** should care about, and files **one GitHub issue per topic** so each change can be prioritized, discussed, and tracked independently. Deduped so nothing is ever filed twice — low noise by design.
 
 ## How it works
 
 ```
-sources.config.mjs ──► fetch-candidates ──► triage (Claude) ──► publish (1 issue)
+sources.config.mjs ──► fetch-candidates ──► triage (Claude) ──► publish (1 issue / topic)
        │                      │                   │                    │
-   list of links        normalize +          rank & filter to     render digest +
-   to pull from         dedup vs seen        the interest profile  commit seen.json
+   list of links        normalize +          rank & filter to     create / update issues
+   to pull from         diff vs ledger        the interest profile  + commit topic ledger
 ```
 
-1. **fetch** — every source in `sources.config.mjs` is normalized to a common shape and diffed against `state/seen.json`, so only genuinely new items move on.
-2. **triage** — the new items + `prompts/interest-profile.md` go to Claude in one call; it returns ≤8 ranked picks (`breaking` / `opportunity` / `watch`) via structured output.
-3. **publish** — renders one markdown digest, opens an issue labeled `browser-radar`, then marks every item from this run as seen.
+1. **fetch** — every source in `sources.config.mjs` is normalized to a common shape and each item is fingerprinted and diffed against `state/topics.json` (the ledger), so it knows what's **new**, **changed**, or **unchanged**.
+2. **triage** — the new/changed items + `prompts/interest-profile.md` go to Claude in one call; it returns ≤8 ranked picks (`breaking` / `opportunity` / `watch`) via structured output. This is the relevance gate — irrelevant items (e.g. CSS paint features) never become issues.
+3. **publish** — one issue per topic, keyed deterministically by `source:id` via the ledger:
+   - **new topic** → creates an issue labeled `browser-radar`, `triage`, `impact:<x>`, `urgency:<y>`, with a hidden `<!-- radar-key: source:id -->` marker.
+   - **changed topic** that already has an issue → adds an "updated" comment + label so the topic accrues its history in place (limited to `breaking`/`opportunity`; `watch` items are file-once).
+   - then commits the refreshed ledger.
+
+The ledger — not GitHub search — is the dedup authority, so two runs can never open two issues for the same topic. Triage the relevant set with the `triage` label, then re-prioritize with your own labels; that's the intended workflow.
 
 ## Adding a source
 
@@ -53,10 +58,11 @@ ANTHROPIC_API_KEY=sk-... npm run dry-run # full pipeline incl. a live Claude tri
 ```
 
 `dry-run` runs the whole pipeline against the live sources and prints a per-source
-✓/✗ health report plus the rendered digest — but **never opens an issue and never
-writes `state/seen.json`**, so it's safe to run repeatedly. It exits non-zero if any
-source fails or a step errors. The triage call only happens when `ANTHROPIC_API_KEY`
-is set; without it, triage is skipped so you can still validate fetching and rendering.
+✓/✗ health report plus the **planned per-topic issue actions** (create / comment / skip)
+— but **never touches GitHub and never writes `state/topics.json`**, so it's safe to run
+repeatedly. It exits non-zero if any source fails or a step errors. The triage call only
+happens when `ANTHROPIC_API_KEY` is set; without it, triage is skipped so you can still
+validate fetching and action planning.
 
 To run the individual steps by hand:
 

@@ -5,7 +5,7 @@
 //   - 'feed'         : any RSS or Atom feed. Just give it a url.
 //   - 'page'         : any webpage. Best-effort text snapshot; the agent reads it.
 //
-// `id` must be unique and stable — it namespaces the dedup state in state/seen.json.
+// `id` must be unique and stable — it namespaces the dedup state in state/topics.json.
 
 export default [
   { type: 'chromestatus', id: 'chromestatus' },

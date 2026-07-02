@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: write # commit state/seen.json back
+  contents: write # commit state/topics.json back
   issues: write # open the weekly digest issue
 
 concurrency:
@@ -35,19 +35,19 @@ jobs:
           MODEL: ${{ vars.MODEL }} # optional override; defaults to claude-sonnet-4-6
         run: node scripts/triage.mjs
 
-      - name: Publish issue
+      - name: Publish issues
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: node scripts/publish.mjs
 
-      - name: Persist seen state
+      - name: Persist topic ledger
         run: |
-          if ! git diff --quiet -- state/seen.json; then
+          if ! git diff --quiet -- state/topics.json; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add state/seen.json
-            git commit -m "chore: update radar seen state"
+            git add state/topics.json
+            git commit -m "chore: update radar topic ledger"
             git push
           else
             echo "No state change to commit."

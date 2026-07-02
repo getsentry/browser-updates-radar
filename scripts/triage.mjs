@@ -9,12 +9,16 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const MODEL = process.env.MODEL || 'claude-sonnet-4-6';
 const MAX_PICKS = 8;
 
-const candidates = JSON.parse(await readFile(join(root, 'candidates.json'), 'utf8'));
+const fetched = JSON.parse(await readFile(join(root, 'candidates.json'), 'utf8'));
 const profile = await readFile(join(root, 'prompts/interest-profile.md'), 'utf8');
+
+// Only new or materially-changed topics are worth a (paid) triage call; unchanged
+// ones already have whatever issue they deserve from a prior run.
+const candidates = fetched.filter(c => c.changed);
 
 if (candidates.length === 0) {
   await writeFile(join(root, 'triage.json'), JSON.stringify({ picks: [] }, null, 2));
-  console.log('No candidates to triage.');
+  console.log('No new or changed candidates to triage.');
   process.exit(0);
 }
 

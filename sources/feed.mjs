@@ -5,7 +5,7 @@ import { XMLParser } from 'fast-xml-parser';
 
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
 
-const MAX_ENTRIES = 20; // newest N per feed; seen.json suppresses repeats after that
+const MAX_ENTRIES = 20; // newest N per feed; the topic ledger suppresses repeats after that
 const MAX_AGE_DAYS = 45; // ignore stale entries on first run
 
 const asArray = v => (Array.isArray(v) ? v : v == null ? [] : [v]);

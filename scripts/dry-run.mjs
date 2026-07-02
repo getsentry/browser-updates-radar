@@ -1,6 +1,6 @@
 // End-to-end dry run: exercise the whole weekly pipeline against live sources
 // and print a reliability verdict, WITHOUT any irreversible side effect —
-// no GitHub issue is opened and state/seen.json is never written.
+// no GitHub issue is opened and state/topics.json is never written.
 //
 //   npm run dry-run
 //
@@ -33,14 +33,14 @@ console.log('=== browser-updates-radar dry run ===\n');
 
 // 1. Fetch — the most fragile part, so report each source individually.
 console.log('▸ Fetching sources…\n');
-const { candidates, health, fetched } = await collect();
+const { candidates, health, counts } = await collect();
 
 const failed = health.filter(h => !h.ok);
 for (const h of health) {
   if (h.ok) console.log(`  ✓ ${h.id.padEnd(16)} ${h.count} item(s)`);
   else console.log(`  ✗ ${h.id.padEnd(16)} ${h.error}`);
 }
-console.log(`\n  ${candidates.length} new candidate(s) after dedup (of ${fetched} fetched).`);
+console.log(`\n  ${counts.total} fetched — ${counts.new} new, ${counts.changed} changed, ${counts.unchanged} unchanged.`);
 if (failed.length) {
   console.log(`  ${failed.length} source(s) failed. (Note: in CI a single source failure does not abort the run.)`);
 }
@@ -53,8 +53,8 @@ await writeFile(join(root, 'candidates.json'), JSON.stringify(candidates, null, 
 console.log('\n▸ Triaging' + (process.env.ANTHROPIC_API_KEY ? ' (live Claude call)…' : ' (no API key — will skip)…') + '\n');
 const triageCode = await step('triage.mjs');
 
-// 3. Publish — renders the digest only; never opens an issue in dry run.
-console.log('\n▸ Rendering digest…');
+// 3. Publish — prints the planned per-topic issue actions; never touches GitHub.
+console.log('\n▸ Planning issue actions…\n');
 const publishCode = await step('publish.mjs');
 
 // Verdict.
