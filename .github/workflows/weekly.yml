@@ -1,0 +1,54 @@
+name: Weekly Browser Updates Radar
+
+on:
+  schedule:
+    - cron: '0 8 * * 1' # Mondays 08:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write # commit state/seen.json back
+  issues: write # open the weekly digest issue
+
+concurrency:
+  group: radar
+  cancel-in-progress: false
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Fetch candidates
+        run: node scripts/fetch-candidates.mjs
+
+      - name: Triage with Claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODEL: ${{ vars.MODEL }} # optional override; defaults to claude-sonnet-4-6
+        run: node scripts/triage.mjs
+
+      - name: Publish issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node scripts/publish.mjs
+
+      - name: Persist seen state
+        run: |
+          if ! git diff --quiet -- state/seen.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add state/seen.json
+            git commit -m "chore: update radar seen state"
+            git push
+          else
+            echo "No state change to commit."
+          fi
