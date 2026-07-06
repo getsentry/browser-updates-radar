@@ -356,7 +356,7 @@
   },
   "chromestatus:5551475195904000": {
     "issue": null,
-    "fingerprint": "h01rw3",
+    "fingerprint": "1tfnsvs",
     "impact": null
   },
   "chromestatus:5078190552907776": {
@@ -447,6 +447,16 @@
   "mozilla-hacks:https://hacks.mozilla.org/2026/05/web-serial-support-in-firefox/": {
     "issue": null,
     "fingerprint": "xa42jz",
+    "impact": null
+  },
+  "chromestatus:6516055192240128": {
+    "issue": 10,
+    "fingerprint": "1bo7w8q",
+    "impact": "watch"
+  },
+  "chromestatus:5075144470036480": {
+    "issue": null,
+    "fingerprint": "psazqi",
     "impact": null
   }
 }
