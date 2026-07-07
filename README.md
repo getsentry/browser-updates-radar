@@ -14,7 +14,7 @@ sources.config.mjs ──► fetch-candidates ──► triage (Claude) ──�
 1. **fetch** — every source in `sources.config.mjs` is normalized to a common shape and each item is fingerprinted and diffed against `state/topics.json` (the ledger), so it knows what's **new**, **changed**, or **unchanged**.
 2. **triage** — the new/changed items + `prompts/interest-profile.md` go to Claude in one call; it returns ≤8 ranked picks (`breaking` / `opportunity` / `watch`) via structured output. This is the relevance gate — irrelevant items (e.g. CSS paint features) never become issues.
 3. **publish** — one issue per topic, keyed deterministically by `source:id` via the ledger:
-   - **new topic** → creates an issue labeled `browser-radar`, `triage`, `impact:<x>`, `urgency:<y>`, with a hidden `<!-- radar-key: source:id -->` marker.
+   - **new topic** → creates an issue labeled `triage`, `impact:<x>`, `urgency:<y>`, with a hidden `<!-- radar-key: source:id -->` marker.
    - **changed topic** that already has an issue → adds an "updated" comment + label so the topic accrues its history in place (limited to `breaking`/`opportunity`; `watch` items are file-once).
    - then commits the refreshed ledger.
 

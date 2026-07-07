@@ -1,8 +1,8 @@
 // Turn each triage pick into its own GitHub issue — one issue per topic, keyed
 // deterministically by `source:id` via the state/topics.json ledger:
 //
-//   - new topic          -> create an issue (labels: browser-radar, triage,
-//                           impact:<x>, urgency:<y>) with a hidden radar-key marker.
+//   - new topic          -> create an issue (labels: triage, impact:<x>,
+//                           urgency:<y>) with a hidden radar-key marker.
 //   - changed topic that  -> add an "updated" comment + label, so the topic
 //     already has an issue    receives its history independently. Limited to
 //                             breaking/opportunity; watch items are file-once.
@@ -31,7 +31,6 @@ const byRef = new Map(candidates.map(c => [`${c.source}:${c.id}`, c]));
 const UPDATE_TIERS = new Set(['breaking', 'opportunity']);
 
 const LABELS = [
-  ['browser-radar', '5319e7', 'Filed by browser-updates-radar'],
   ['triage', 'fbca04', 'Needs human review / prioritization'],
   ['updated', '0e8a16', 'Topic changed upstream since it was filed'],
   ['impact:breaking', 'b60205', 'Breaking risk to the SDK'],
@@ -104,7 +103,7 @@ const actions = [];
 for (const pick of picks) {
   const c = byRef.get(pick.ref);
   if (!c) continue; // pick must correspond to a fetched candidate
-  const labels = ['browser-radar', 'triage', `impact:${pick.impact}`, `urgency:${pick.urgency}`];
+  const labels = ['triage', `impact:${pick.impact}`, `urgency:${pick.urgency}`];
 
   if (c.prevIssue == null) {
     actions.push({ kind: 'create', pick, c, labels });
