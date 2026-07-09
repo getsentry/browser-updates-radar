@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@11.10.0",
   "description": "Weekly digest of upcoming browser-platform changes relevant to the Sentry Browser SDK team.",
   "scripts": {
     "fetch": "node scripts/fetch-candidates.mjs",
@@ -11,7 +12,7 @@
     "dry-run": "node scripts/dry-run.mjs"
   },
   "dependencies": {
-    "fast-xml-parser": "^4.5.0"
+    "fast-xml-parser": "^5.9.3"
   },
   "engines": {
     "node": ">=20"

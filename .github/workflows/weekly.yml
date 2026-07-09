@@ -21,12 +21,14 @@ jobs:
         with:
           fetch-depth: 0 # full history so the ledger commit can rebase before pushing
 
+      - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       - name: Fetch candidates
         run: node scripts/fetch-candidates.mjs

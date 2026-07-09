@@ -1,0 +1,3 @@
+# Only install package versions at least this old (minutes). 10080 = 1 week —
+# a cooldown against freshly-published malicious/compromised releases.
+minimumReleaseAge: 10080
