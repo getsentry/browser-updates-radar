@@ -47,6 +47,8 @@ Edit `prompts/interest-profile.md`. That file is the entire definition of "inter
 4. The built-in `GITHUB_TOKEN` handles issue creation and the state commit — no PAT needed.
 5. Trigger a manual run from the Actions tab (**Run workflow**) to verify; it otherwise runs Mondays 08:00 UTC.
 
+New issues `cc` the **`@getsentry/team-javascript-sdks-browser`** team so they're notified. Override the team with a repository variable **`NOTIFY_TEAM`** (e.g. `@getsentry/some-team`), or set it to `none` to disable the mention. Note: team-mention notifications can be unreliable when the mention comes from the built-in `GITHUB_TOKEN`; if the team isn't getting pinged, publish with a PAT/GitHub App token from an org member instead (swap `secrets.GITHUB_TOKEN` on the *Publish issues* step).
+
 ## Local testing
 
 The fastest way to check everything works before enabling the schedule:

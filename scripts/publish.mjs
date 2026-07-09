@@ -44,6 +44,13 @@ const LABELS = [
 const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 const repo = process.env.GITHUB_REPOSITORY;
 
+// Team to @mention on newly filed issues so they get notified. Defaults to the
+// JS Browser SDK team; set the NOTIFY_TEAM repo variable to another "@org/team"
+// handle to override, or to "none" to disable the mention. An unset repo
+// variable arrives as an empty string, so `||` (not `??`) keeps the default.
+const rawTeam = (process.env.NOTIFY_TEAM || '@getsentry/team-javascript-sdks-browser').trim();
+const notifyTeam = rawTeam === 'none' ? '' : rawTeam;
+
 async function gh(method, path, body) {
   const res = await fetch(`https://api.github.com/repos/${repo}${path}`, {
     method,
@@ -87,7 +94,9 @@ function issueBody(c, pick) {
   const lines = [pick.why, ''];
   const details = detailLines(c);
   if (details.length) lines.push(details.join('\n'), '');
-  lines.push(`🔗 ${c.url}`, '', `<!-- radar-key: ${pick.ref} -->`);
+  lines.push(`🔗 ${c.url}`);
+  if (notifyTeam) lines.push('', `cc ${notifyTeam}`);
+  lines.push('', `<!-- radar-key: ${pick.ref} -->`);
   return lines.join('\n');
 }
 
