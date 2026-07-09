@@ -43,6 +43,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          NOTIFY_TEAM: ${{ vars.NOTIFY_TEAM }} # override the team @-mentioned on new issues (default @getsentry/team-javascript-sdks-browser); set "none" to disable
         run: node scripts/publish.mjs
 
       - name: Persist topic ledger
