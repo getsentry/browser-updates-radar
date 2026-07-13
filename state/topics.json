@@ -101,7 +101,7 @@
   },
   "chromestatus:4861677550043136": {
     "issue": null,
-    "fingerprint": "1dd5hx4",
+    "fingerprint": "1oo988x",
     "impact": null
   },
   "chromestatus:5136859632107520": {
@@ -161,7 +161,7 @@
   },
   "chromestatus:6260680824061952": {
     "issue": null,
-    "fingerprint": "1jjgj3x",
+    "fingerprint": "l58oi2",
     "impact": null
   },
   "chromestatus:5298387739082752": {
@@ -230,9 +230,9 @@
     "impact": null
   },
   "chromestatus:5188237101891584": {
-    "issue": null,
-    "fingerprint": "18wdqpu",
-    "impact": null
+    "issue": 15,
+    "fingerprint": "2dnhmu",
+    "impact": "opportunity"
   },
   "chromestatus:5070160203481088": {
     "issue": null,
@@ -251,7 +251,7 @@
   },
   "chromestatus:5077657663438848": {
     "issue": null,
-    "fingerprint": "1vy2qdo",
+    "fingerprint": "32slzk",
     "impact": null
   },
   "chromestatus:6631012282007552": {
@@ -280,14 +280,14 @@
     "impact": null
   },
   "chromestatus:5194473869017088": {
-    "issue": null,
-    "fingerprint": "q37no3",
-    "impact": null
+    "issue": 13,
+    "fingerprint": "89lhpz",
+    "impact": "watch"
   },
   "chromestatus:5162221567082496": {
-    "issue": null,
-    "fingerprint": "1f1y0q3",
-    "impact": null
+    "issue": 14,
+    "fingerprint": "15b5l73",
+    "impact": "watch"
   },
   "chromestatus:5137946677215232": {
     "issue": null,
@@ -336,7 +336,7 @@
   },
   "chromestatus:5863296436666368": {
     "issue": null,
-    "fingerprint": "zl6bld",
+    "fingerprint": "k7xb4h",
     "impact": null
   },
   "chromestatus:6297362687066112": {
@@ -356,12 +356,12 @@
   },
   "chromestatus:5551475195904000": {
     "issue": null,
-    "fingerprint": "1tfnsvs",
+    "fingerprint": "1saxx9u",
     "impact": null
   },
   "chromestatus:5078190552907776": {
     "issue": null,
-    "fingerprint": "qe3sa0",
+    "fingerprint": "19x5kzt",
     "impact": null
   },
   "chromestatus:5094091886034944": {
@@ -456,7 +456,27 @@
   },
   "chromestatus:5075144470036480": {
     "issue": null,
-    "fingerprint": "psazqi",
+    "fingerprint": "1nyy2uq",
+    "impact": null
+  },
+  "chromestatus:5118934710878208": {
+    "issue": 16,
+    "fingerprint": "1r8alyf",
+    "impact": "opportunity"
+  },
+  "chromestatus:5153829504024576": {
+    "issue": null,
+    "fingerprint": "rea7yc",
+    "impact": null
+  },
+  "chromestatus:5113729407647744": {
+    "issue": null,
+    "fingerprint": "1847fni",
+    "impact": null
+  },
+  "chromestatus:6240467143491584": {
+    "issue": null,
+    "fingerprint": "1oj9wrp",
     "impact": null
   }
 }
