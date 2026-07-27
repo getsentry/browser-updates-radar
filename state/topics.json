@@ -161,7 +161,7 @@
   },
   "chromestatus:6260680824061952": {
     "issue": null,
-    "fingerprint": "17ac0lx",
+    "fingerprint": "199q3ch",
     "impact": null
   },
   "chromestatus:5298387739082752": {
@@ -315,9 +315,9 @@
     "impact": "breaking"
   },
   "chromestatus:4790543041298432": {
-    "issue": null,
-    "fingerprint": "1v7vyq9",
-    "impact": null
+    "issue": 20,
+    "fingerprint": "1vmnd4l",
+    "impact": "watch"
   },
   "chromestatus:6264645053710336": {
     "issue": null,
@@ -345,13 +345,13 @@
     "impact": null
   },
   "chromestatus:5054329641893888": {
-    "issue": null,
-    "fingerprint": "1tbda0f",
-    "impact": null
+    "issue": 21,
+    "fingerprint": "2zxakz",
+    "impact": "watch"
   },
   "chromestatus:5108373464547328": {
     "issue": null,
-    "fingerprint": "14a0rq7",
+    "fingerprint": "19adjyb",
     "impact": null
   },
   "chromestatus:5551475195904000": {
@@ -361,12 +361,12 @@
   },
   "chromestatus:5078190552907776": {
     "issue": null,
-    "fingerprint": "mg5d9i",
+    "fingerprint": "14fy6ay",
     "impact": null
   },
   "chromestatus:5094091886034944": {
     "issue": null,
-    "fingerprint": "9a2sda",
+    "fingerprint": "1y6f38i",
     "impact": null
   },
   "chromestatus:5201338641285120": {
@@ -391,7 +391,7 @@
   },
   "webkit:https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/": {
     "issue": null,
-    "fingerprint": "1x1cb1h",
+    "fingerprint": "5p8pjk",
     "impact": null
   },
   "webkit:https://webkit.org/blog/18133/release-notes-for-safari-technology-preview-247/": {
@@ -487,6 +487,36 @@
   "chromestatus:5811907077472256": {
     "issue": null,
     "fingerprint": "1mjtf22",
+    "impact": null
+  },
+  "chromestatus:6594955352080384": {
+    "issue": 19,
+    "fingerprint": "1r6dd1u",
+    "impact": "opportunity"
+  },
+  "chromestatus:5113656292540416": {
+    "issue": null,
+    "fingerprint": "1w3jpca",
+    "impact": null
+  },
+  "chromestatus:4644898109259776": {
+    "issue": null,
+    "fingerprint": "866ene",
+    "impact": null
+  },
+  "chromestatus:5067363861004288": {
+    "issue": null,
+    "fingerprint": "974cdd",
+    "impact": null
+  },
+  "chromestatus:5075054393163776": {
+    "issue": null,
+    "fingerprint": "7e9dy9",
+    "impact": null
+  },
+  "webkit:https://webkit.org/blog/18162/release-notes-for-safari-technology-preview-248/": {
+    "issue": null,
+    "fingerprint": "3mnjmb",
     "impact": null
   }
 }
