@@ -8,14 +8,26 @@ importers:
 
   .:
     dependencies:
+      '@openrouter/agent':
+        specifier: ^0.9.0
+        version: 0.9.0
       fast-xml-parser:
         specifier: ^5.10.1
         version: 5.10.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
 
 packages:
 
   '@nodable/entities@3.0.0':
     resolution: {integrity: sha512-8L9xFeTYKhm49xfIypoe2W5wV1m/3Z58kT+7kR9A8OyFxcPduI4VmxaUMQyKYrRjUoLLSXv6EKKID5Tvj9cUVw==}
+
+  '@openrouter/agent@0.9.0':
+    resolution: {integrity: sha512-VYXRbMBbvLFwqzySZF6f52EtzMpRO356A8pasijGheNaoOgkHmOcDa6Xr4STpdoySMxCleilTvDp4AvD17+bFA==}
+
+  '@openrouter/sdk@0.13.67':
+    resolution: {integrity: sha512-kUVaFYA9Xehq67ndTk98i+tRLfYH/F6xSf/WuC8dsukBzcgBvYQydoeKw4Xe+peXG/wOVtDxukWt5SqzhbloKw==}
 
   anynum@1.0.1:
     resolution: {integrity: sha512-N6//FLET/tXYNM/F6ABca1oH6fWB+KlTt909Le28WMDBk8oaT4vY17DCrwg2MvmuqUKt3Ni4N5dGJ/EoBgcO6A==}
@@ -41,9 +53,21 @@ packages:
     resolution: {integrity: sha512-ghig2TBE/H11aOVgmahA3MhimvkBr6JIYknH/Dhdk10nXwdbIqBJsbfMxpvFPG8bAw77gN29aQWvKpmVoPlvPQ==}
     engines: {node: '>=16.0.0'}
 
+  zod@4.4.3:
+    resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
+
 snapshots:
 
   '@nodable/entities@3.0.0': {}
+
+  '@openrouter/agent@0.9.0':
+    dependencies:
+      '@openrouter/sdk': 0.13.67
+      zod: 4.4.3
+
+  '@openrouter/sdk@0.13.67':
+    dependencies:
+      zod: 4.4.3
 
   anynum@1.0.1: {}
 
@@ -70,3 +94,5 @@ snapshots:
       anynum: 1.0.1
 
   xml-naming@0.3.0: {}
+
+  zod@4.4.3: {}

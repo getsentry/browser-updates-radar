@@ -1,12 +1,20 @@
-// Send the new candidates + the interest profile to Claude and get back a small,
-// ranked set of picks via a forced tool call (structured output). Writes triage.json.
+// Send the new candidates + the interest profile to Claude (via OpenRouter) and get
+// back a small, ranked set of picks via a forced tool call (structured output).
+// Writes triage.json.
+//
+// The tool is declared with `execute: false` (a "manual" tool): we never want the
+// agent loop to run anything, we just want the model's validated arguments. Paired
+// with stopWhen/allowFinalResponse below that keeps this to exactly one billed call.
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
+import { OpenRouter, tool, stepCountIs } from '@openrouter/agent';
+import { z } from 'zod';
+
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const MODEL = process.env.MODEL || 'claude-sonnet-4-6';
+const MODEL = process.env.MODEL || 'anthropic/claude-sonnet-4.6';
 const MAX_PICKS = 8;
 
 const fetched = JSON.parse(await readFile(join(root, 'candidates.json'), 'utf8'));
@@ -22,16 +30,16 @@ if (candidates.length === 0) {
   process.exit(0);
 }
 
-const apiKey = process.env.ANTHROPIC_API_KEY;
+const apiKey = process.env.OPENROUTER_API_KEY;
 if (!apiKey) {
   // In a dry run we don't want to force a paid API call: skip with empty picks
   // so the rest of the pipeline can still be exercised. Real runs must fail.
   if (process.env.DRY_RUN === '1') {
-    await writeFile(join(root, 'triage.json'), JSON.stringify({ picks: [], skipped: 'ANTHROPIC_API_KEY not set' }, null, 2));
-    console.log('DRY_RUN: ANTHROPIC_API_KEY not set — skipping triage (0 picks).');
+    await writeFile(join(root, 'triage.json'), JSON.stringify({ picks: [], skipped: 'OPENROUTER_API_KEY not set' }, null, 2));
+    console.log('DRY_RUN: OPENROUTER_API_KEY not set, skipping triage (0 picks).');
     process.exit(0);
   }
-  console.error('ANTHROPIC_API_KEY is not set.');
+  console.error('OPENROUTER_API_KEY is not set.');
   process.exit(1);
 }
 
@@ -48,33 +56,26 @@ const compact = candidates.map(c => ({
   url: c.url,
 }));
 
-const tool = {
+const reportPicks = tool({
   name: 'report_picks',
   description: 'Report the browser-platform changes worth the SDK team’s attention.',
-  input_schema: {
-    type: 'object',
-    properties: {
-      picks: {
-        type: 'array',
-        maxItems: MAX_PICKS,
-        items: {
-          type: 'object',
-          properties: {
-            ref: { type: 'string', description: 'The candidate ref, exactly as given (source:id).' },
-            title: { type: 'string' },
-            source: { type: 'string' },
-            impact: { type: 'string', enum: ['breaking', 'opportunity', 'watch'] },
-            urgency: { type: 'string', enum: ['high', 'med', 'low'] },
-            why: { type: 'string', description: 'Why this matters specifically to the Sentry Browser SDK. 1-3 sentences.' },
-            url: { type: 'string' },
-          },
-          required: ['ref', 'title', 'source', 'impact', 'urgency', 'why', 'url'],
-        },
-      },
-    },
-    required: ['picks'],
-  },
-};
+  inputSchema: z.object({
+    picks: z
+      .array(
+        z.object({
+          ref: z.string().describe('The candidate ref, exactly as given (source:id).'),
+          title: z.string(),
+          source: z.string(),
+          impact: z.enum(['breaking', 'opportunity', 'watch']),
+          urgency: z.enum(['high', 'med', 'low']),
+          why: z.string().describe('Why this matters specifically to the Sentry Browser SDK. 1-3 sentences.'),
+          url: z.string(),
+        }),
+      )
+      .max(MAX_PICKS),
+  }),
+  execute: false,
+});
 
 const prompt = `${profile}
 
@@ -83,30 +84,28 @@ Below are ${compact.length} new browser-platform items collected from various so
 ITEMS (JSON):
 ${JSON.stringify(compact, null, 2)}`;
 
-const res = await fetch('https://api.anthropic.com/v1/messages', {
-  method: 'POST',
-  headers: {
-    'x-api-key': apiKey,
-    'anthropic-version': '2023-06-01',
-    'content-type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: MODEL,
-    max_tokens: 4096,
-    tools: [tool],
-    tool_choice: { type: 'tool', name: 'report_picks' },
-    messages: [{ role: 'user', content: prompt }],
-  }),
-});
+const openrouter = new OpenRouter({ apiKey });
 
-if (!res.ok) {
-  console.error(`Anthropic API error ${res.status}: ${await res.text()}`);
+let picks = [];
+try {
+  const result = openrouter.callModel({
+    model: MODEL,
+    input: prompt,
+    maxOutputTokens: 4096,
+    tools: [reportPicks],
+    toolChoice: { type: 'function', name: 'report_picks' },
+    // One model turn, and no follow-up text turn: the tool arguments are the
+    // entire answer, so a second round trip would just burn tokens.
+    stopWhen: stepCountIs(1),
+    allowFinalResponse: false,
+  });
+
+  const call = (await result.getToolCalls()).find(c => c.name === 'report_picks');
+  picks = call?.arguments?.picks ?? [];
+} catch (err) {
+  console.error(`OpenRouter request failed: ${err?.message ?? err}`);
   process.exit(1);
 }
-
-const data = await res.json();
-const block = data.content?.find(b => b.type === 'tool_use');
-const picks = block?.input?.picks ?? [];
 
 await writeFile(join(root, 'triage.json'), JSON.stringify({ model: MODEL, picks }, null, 2));
 console.log(`Triaged ${compact.length} candidate(s) -> ${picks.length} pick(s).`);

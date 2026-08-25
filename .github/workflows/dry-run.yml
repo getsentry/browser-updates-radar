@@ -27,6 +27,6 @@ jobs:
 
       - name: Dry run (fetch + live triage + planned actions)
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          MODEL: ${{ vars.MODEL }} # optional override; defaults to claude-sonnet-4-6
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MODEL: ${{ vars.MODEL }} # optional override; defaults to anthropic/claude-sonnet-4.6
         run: pnpm dry-run

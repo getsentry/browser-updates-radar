@@ -1,3 +1,5 @@
+allowBuilds:
+  '@openrouter/sdk': false # postinstall is only a TS-version check; this project is plain .mjs
 # Only install package versions at least this old (minutes). 10080 = 1 week —
 # a cooldown against freshly-published malicious/compromised releases.
 minimumReleaseAge: 10080

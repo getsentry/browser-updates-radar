@@ -33,10 +33,10 @@ jobs:
       - name: Fetch candidates
         run: node scripts/fetch-candidates.mjs
 
-      - name: Triage with Claude
+      - name: Triage with Claude (via OpenRouter)
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          MODEL: ${{ vars.MODEL }} # optional override; defaults to claude-sonnet-4-6
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MODEL: ${{ vars.MODEL }} # optional override; defaults to anthropic/claude-sonnet-4.6
         run: node scripts/triage.mjs
 
       - name: Publish issues

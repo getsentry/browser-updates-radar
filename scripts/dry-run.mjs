@@ -4,10 +4,11 @@
 //
 //   npm run dry-run
 //
-// The triage step makes a real Claude call only when ANTHROPIC_API_KEY is set;
-// otherwise it is skipped so you can still validate that every source fetches
-// and the digest renders. Exits non-zero if any source hard-fails or a step
-// errors, so it doubles as a pre-flight check before enabling the schedule.
+// The triage step makes a real Claude call (via OpenRouter) only when
+// OPENROUTER_API_KEY is set; otherwise it is skipped so you can still validate
+// that every source fetches and the digest renders. Exits non-zero if any source
+// hard-fails or a step errors, so it doubles as a pre-flight check before
+// enabling the schedule.
 
 import { spawn } from 'node:child_process';
 import { writeFile } from 'node:fs/promises';
@@ -49,8 +50,8 @@ if (failed.length) {
 // as CI does — this exercises the on-disk contract between the steps too.
 await writeFile(join(root, 'candidates.json'), JSON.stringify(candidates, null, 2));
 
-// 2. Triage — real Claude call if a key is present, graceful skip otherwise.
-console.log('\n▸ Triaging' + (process.env.ANTHROPIC_API_KEY ? ' (live Claude call)…' : ' (no API key — will skip)…') + '\n');
+// 2. Triage: real Claude call if a key is present, graceful skip otherwise.
+console.log('\n▸ Triaging' + (process.env.OPENROUTER_API_KEY ? ' (live Claude call via OpenRouter)…' : ' (no API key, will skip)…') + '\n');
 const triageCode = await step('triage.mjs');
 
 // 3. Publish — prints the planned per-topic issue actions; never touches GitHub.
