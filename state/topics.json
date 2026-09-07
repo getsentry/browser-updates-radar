@@ -486,7 +486,7 @@
   },
   "chromestatus:5811907077472256": {
     "issue": null,
-    "fingerprint": "1rrqhg6",
+    "fingerprint": "1pozz2u",
     "impact": null
   },
   "chromestatus:6594955352080384": {
@@ -601,7 +601,7 @@
   },
   "chromestatus:5146996093616128": {
     "issue": null,
-    "fingerprint": "1uhrnuo",
+    "fingerprint": "pzv00c",
     "impact": null
   },
   "chromestatus:5178263526834176": {
@@ -626,7 +626,7 @@
   },
   "chromestatus:5191512456560640": {
     "issue": null,
-    "fingerprint": "1sn8mmz",
+    "fingerprint": "vhjwa",
     "impact": null
   },
   "chromestatus:5205192866922496": {
@@ -731,7 +731,7 @@
   },
   "chromestatus:5082950457884672": {
     "issue": null,
-    "fingerprint": "1wn53xj",
+    "fingerprint": "1kjh4hd",
     "impact": null
   },
   "chromestatus:5100672946143232": {
@@ -742,6 +742,41 @@
   "webkit:https://webkit.org/blog/18194/release-notes-for-safari-technology-preview-251/": {
     "issue": 26,
     "fingerprint": "ffiog7",
+    "impact": "watch"
+  },
+  "chromestatus:5109685301673984": {
+    "issue": null,
+    "fingerprint": "9ha632",
+    "impact": null
+  },
+  "chromestatus:5099333963874304": {
+    "issue": null,
+    "fingerprint": "ecqtyf",
+    "impact": null
+  },
+  "chromestatus:5075532483657728": {
+    "issue": null,
+    "fingerprint": "7ffoiw",
+    "impact": null
+  },
+  "chromestatus:5122501071994880": {
+    "issue": null,
+    "fingerprint": "1f5zyhq",
+    "impact": null
+  },
+  "chromestatus:6253669501763584": {
+    "issue": null,
+    "fingerprint": "cb8bib",
+    "impact": null
+  },
+  "webkit:https://webkit.org/blog/18283/submit-your-ideas-for-interop-2027/": {
+    "issue": 28,
+    "fingerprint": "dk53jb",
+    "impact": "opportunity"
+  },
+  "webkit:https://webkit.org/blog/18227/fixing-top-level-await-in-safari/": {
+    "issue": 27,
+    "fingerprint": "1204j2w",
     "impact": "watch"
   }
 }
