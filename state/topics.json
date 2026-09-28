@@ -141,17 +141,17 @@
   },
   "chromestatus:5091582546149376": {
     "issue": null,
-    "fingerprint": "1lyq4og",
+    "fingerprint": "y31lzv",
     "impact": null
   },
   "chromestatus:5198951632470016": {
     "issue": null,
-    "fingerprint": "1tnwgta",
+    "fingerprint": "1gv6799",
     "impact": null
   },
   "chromestatus:4832783806627840": {
     "issue": null,
-    "fingerprint": "1rpoorv",
+    "fingerprint": "1nr8nnu",
     "impact": null
   },
   "chromestatus:5915984063889408": {
@@ -306,7 +306,7 @@
   },
   "chromestatus:5078177326170112": {
     "issue": null,
-    "fingerprint": "y213o4",
+    "fingerprint": "1l3pte9",
     "impact": null
   },
   "chromestatus:5175745573945344": {
@@ -325,13 +325,13 @@
     "impact": null
   },
   "chromestatus:5161589557821440": {
-    "issue": null,
-    "fingerprint": "17lm6gp",
-    "impact": null
+    "issue": 38,
+    "fingerprint": "gwh3py",
+    "impact": "watch"
   },
   "chromestatus:5068277495758848": {
     "issue": null,
-    "fingerprint": "468ux8",
+    "fingerprint": "1teekeh",
     "impact": null
   },
   "chromestatus:5863296436666368": {
@@ -346,7 +346,7 @@
   },
   "chromestatus:5054329641893888": {
     "issue": 21,
-    "fingerprint": "lk2ei",
+    "fingerprint": "erczm1",
     "impact": "watch"
   },
   "chromestatus:5108373464547328": {
@@ -506,7 +506,7 @@
   },
   "chromestatus:5067363861004288": {
     "issue": null,
-    "fingerprint": "13yzidd",
+    "fingerprint": "1vg72xx",
     "impact": null
   },
   "chromestatus:5075054393163776": {
@@ -581,7 +581,7 @@
   },
   "chromestatus:5194104408506368": {
     "issue": null,
-    "fingerprint": "2yjb51",
+    "fingerprint": "za309y",
     "impact": null
   },
   "chromestatus:5080055102439424": {
@@ -591,7 +591,7 @@
   },
   "chromestatus:5201832664629248": {
     "issue": null,
-    "fingerprint": "tpb8yf",
+    "fingerprint": "tkdr3q",
     "impact": null
   },
   "chromestatus:6210300985606144": {
@@ -601,12 +601,12 @@
   },
   "chromestatus:5146996093616128": {
     "issue": null,
-    "fingerprint": "47gmix",
+    "fingerprint": "ddqesq",
     "impact": null
   },
   "chromestatus:5178263526834176": {
     "issue": null,
-    "fingerprint": "1s0sw1v",
+    "fingerprint": "xz6f1i",
     "impact": null
   },
   "chromestatus:5114591051907072": {
@@ -626,7 +626,7 @@
   },
   "chromestatus:5191512456560640": {
     "issue": null,
-    "fingerprint": "rkhiif",
+    "fingerprint": "1dlmmae",
     "impact": null
   },
   "chromestatus:5205192866922496": {
@@ -651,22 +651,22 @@
   },
   "chromestatus:5183481574850560": {
     "issue": null,
-    "fingerprint": "1k15tra",
+    "fingerprint": "yt4kj",
     "impact": null
   },
   "chromestatus:5152834368700416": {
     "issue": null,
-    "fingerprint": "1cnmdvm",
+    "fingerprint": "1w623xc",
     "impact": null
   },
   "chromestatus:5663304168112128": {
     "issue": null,
-    "fingerprint": "65bl79",
+    "fingerprint": "1nislma",
     "impact": null
   },
   "chromestatus:6366274495053824": {
     "issue": 30,
-    "fingerprint": "1klnx2t",
+    "fingerprint": "y1s12a",
     "impact": "watch"
   },
   "chromestatus:5194817700364288": {
@@ -711,32 +711,32 @@
   },
   "chromestatus:5152215540039680": {
     "issue": null,
-    "fingerprint": "169eyfr",
+    "fingerprint": "ua66o",
     "impact": null
   },
   "chromestatus:5324559251275776": {
     "issue": null,
-    "fingerprint": "1t4isoy",
+    "fingerprint": "gx8xj3",
     "impact": null
   },
   "chromestatus:5114042131808256": {
     "issue": null,
-    "fingerprint": "1mblm0w",
+    "fingerprint": "d7ezq7",
     "impact": null
   },
   "chromestatus:5197863732772864": {
     "issue": null,
-    "fingerprint": "1gbnuo9",
+    "fingerprint": "fxjo4o",
     "impact": null
   },
   "chromestatus:5082950457884672": {
     "issue": null,
-    "fingerprint": "hr5yha",
+    "fingerprint": "g9xw4t",
     "impact": null
   },
   "chromestatus:5100672946143232": {
     "issue": null,
-    "fingerprint": "1pgehdb",
+    "fingerprint": "11vint8",
     "impact": null
   },
   "webkit:https://webkit.org/blog/18194/release-notes-for-safari-technology-preview-251/": {
@@ -751,17 +751,17 @@
   },
   "chromestatus:5099333963874304": {
     "issue": null,
-    "fingerprint": "1a7bemc",
+    "fingerprint": "rdn7tv",
     "impact": null
   },
   "chromestatus:5075532483657728": {
     "issue": null,
-    "fingerprint": "1y89u1",
+    "fingerprint": "1vi4x4a",
     "impact": null
   },
   "chromestatus:5122501071994880": {
     "issue": null,
-    "fingerprint": "1hhrmqj",
+    "fingerprint": "b1ulh6",
     "impact": null
   },
   "chromestatus:6253669501763584": {
@@ -791,27 +791,27 @@
   },
   "chromestatus:5214647044145152": {
     "issue": 33,
-    "fingerprint": "f76y5",
+    "fingerprint": "cmzn7u",
     "impact": "opportunity"
   },
   "chromestatus:6327898878377984": {
     "issue": null,
-    "fingerprint": "12besnb",
+    "fingerprint": "1jn1lpg",
     "impact": null
   },
   "chromestatus:5168674259468288": {
     "issue": null,
-    "fingerprint": "1vlgr0d",
+    "fingerprint": "rf9c0q",
     "impact": null
   },
   "chromestatus:5422782593761280": {
     "issue": null,
-    "fingerprint": "10y8mwx",
+    "fingerprint": "p71v60",
     "impact": null
   },
   "chromestatus:5152728072060928": {
     "issue": 29,
-    "fingerprint": "114xt1x",
+    "fingerprint": "gpgz3m",
     "impact": "breaking"
   },
   "webkit:https://webkit.org/blog/18304/release-notes-for-safari-technology-preview-252/": {
@@ -821,32 +821,92 @@
   },
   "chromestatus:5112398709129216": {
     "issue": 34,
-    "fingerprint": "vgoytm",
+    "fingerprint": "t0bqeh",
     "impact": "watch"
   },
   "chromestatus:5072259281715200": {
     "issue": null,
-    "fingerprint": "1b50vgf",
+    "fingerprint": "j4be5w",
     "impact": null
   },
   "chromestatus:6294595288825856": {
     "issue": null,
-    "fingerprint": "xhcure",
+    "fingerprint": "125hnef",
     "impact": null
   },
   "chromestatus:4895435813683200": {
     "issue": null,
-    "fingerprint": "rgia2j",
+    "fingerprint": "1ggsujc",
     "impact": null
   },
   "chromestatus:5071131271888896": {
     "issue": 35,
-    "fingerprint": "19wb2dy",
+    "fingerprint": "1pv9vem",
     "impact": "watch"
   },
   "webkit:https://webkit.org/blog/18325/webkit-features-for-safari-27-0/": {
     "issue": 36,
     "fingerprint": "1928yha",
     "impact": "opportunity"
+  },
+  "chromestatus:4882016087703552": {
+    "issue": null,
+    "fingerprint": "1gubywm",
+    "impact": null
+  },
+  "chromestatus:5107682460696576": {
+    "issue": null,
+    "fingerprint": "i0475w",
+    "impact": null
+  },
+  "chromestatus:5124378896498688": {
+    "issue": null,
+    "fingerprint": "yym2ef",
+    "impact": null
+  },
+  "chromestatus:5136856479039488": {
+    "issue": null,
+    "fingerprint": "it85tx",
+    "impact": null
+  },
+  "chromestatus:5083335148437504": {
+    "issue": 37,
+    "fingerprint": "1p5utdg",
+    "impact": "breaking"
+  },
+  "chromestatus:5069584943153152": {
+    "issue": null,
+    "fingerprint": "1ruozg9",
+    "impact": null
+  },
+  "chromestatus:5087964794322944": {
+    "issue": null,
+    "fingerprint": "1rcwx86",
+    "impact": null
+  },
+  "chromestatus:5136123851571200": {
+    "issue": null,
+    "fingerprint": "1bohr3l",
+    "impact": null
+  },
+  "chromestatus:5138797158334464": {
+    "issue": null,
+    "fingerprint": "1uod8xy",
+    "impact": null
+  },
+  "chromestatus:6427766428925952": {
+    "issue": null,
+    "fingerprint": "tkpdfe",
+    "impact": null
+  },
+  "chromestatus:4886345347629056": {
+    "issue": null,
+    "fingerprint": "1xeehzs",
+    "impact": null
+  },
+  "webkit:https://webkit.org/blog/18357/release-notes-for-safari-technology-preview-253/": {
+    "issue": null,
+    "fingerprint": "gc787f",
+    "impact": null
   }
 }
