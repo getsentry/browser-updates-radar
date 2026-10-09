@@ -49,6 +49,7 @@ const compact = candidates.map(c => ({
   source: c.source,
   title: c.title,
   summary: c.summary,
+  body: c.body ?? undefined,
   type: c.type,
   components: c.components,
   maturity: c.maturity,
@@ -79,7 +80,7 @@ const reportPicks = tool({
 
 const prompt = `${profile}
 
-Below are ${compact.length} new browser-platform items collected from various sources this week. Select only the ones genuinely worth the Sentry Browser SDK team's attention (at most ${MAX_PICKS}). Prefer fewer, higher-signal picks over padding the list. If a "page-snapshot" item contains several noteworthy things, pick the single most relevant and describe it.
+Below are ${compact.length} new browser-platform items collected from various sources this week. Select only the ones genuinely worth the Sentry Browser SDK team's attention (at most ${MAX_PICKS}). Prefer fewer, higher-signal picks over padding the list. If a "page-snapshot" item contains several noteworthy things, pick the single most relevant and describe it. When an item has a "body" (the full post, e.g. release notes), judge it on the specific changes listed there: name the relevant ones in "why", and skip the item if none apply.
 
 ITEMS (JSON):
 ${JSON.stringify(compact, null, 2)}`;

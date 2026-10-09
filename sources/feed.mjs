@@ -25,6 +25,25 @@ function stripHtml(s) {
     .slice(0, 1200);
 }
 
+// Full post text for triage. Release notes (e.g. Safari Technology Preview) only
+// say "now available" in their summary; the actual changes live in <content>.
+// Block-level tags become newlines so sections and list items stay readable.
+const MAX_BODY = 40000;
+const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
+
+function bodyText(s) {
+  return String(s)
+    .replace(/<\/?(p|li|ul|ol|h[1-6]|div|br|tr|pre|blockquote)\b[^>]*>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (m, e) =>
+      e[0] === '#' ? String.fromCodePoint(parseInt(e[1] === 'x' ? e.slice(2) : e.slice(1), e[1] === 'x' ? 16 : 10)) : (ENTITIES[e.toLowerCase()] ?? ' '),
+    )
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\s*\n\s*/g, '\n')
+    .trim()
+    .slice(0, MAX_BODY);
+}
+
 function linkOf(entry) {
   // Atom: <link href="..."> (possibly several); RSS: <link>text</link>
   const link = entry.link;
@@ -52,11 +71,15 @@ export async function fetch_(cfg) {
     const ts = rawDate ? Date.parse(rawDate) : NaN;
     if (!Number.isNaN(ts) && ts < cutoff) continue;
 
+    const content = textOf(item.content) || textOf(item['content:encoded']);
+
     out.push({
       source: cfg.id,
       id: url || title,
       title: title || '(untitled)',
       summary: stripHtml(textOf(item.summary) || textOf(item.description) || textOf(item.content) || textOf(item['content:encoded'])),
+      // Not part of the fingerprint: only summary changes should re-triage a topic.
+      body: content ? bodyText(content) : null,
       url,
       date: rawDate || null,
       type: null,
