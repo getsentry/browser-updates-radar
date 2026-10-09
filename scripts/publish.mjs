@@ -100,27 +100,60 @@ function issueBody(c, pick) {
   return lines.join('\n');
 }
 
-function updateComment(c, pick) {
-  const lines = [`🔄 Updated upstream — re-triaged ${today} as **${pick.impact}** / urgency **${pick.urgency}**.`, '', pick.why];
+// `pick` is absent when triage skipped the topic but the issue has assignees.
+function updateComment(c, pick, { assignees = [], shipped = false } = {}) {
+  const lines = [];
+  if (shipped) lines.push(`🚀 Shipping in Chrome: status is now **${c.browsers.chrome}**.`, '');
+  if (pick) lines.push(`🔄 Updated upstream: re-triaged ${today} as **${pick.impact}** / urgency **${pick.urgency}**.`, '', pick.why);
+  else lines.push(`🔄 Updated upstream on ${today}.`);
   const details = detailLines(c);
   if (details.length) lines.push('', details.join('\n'));
   lines.push('', `🔗 ${c.url}`);
+  if (assignees.length) lines.push('', `cc ${assignees.map(a => `@${a}`).join(' ')}`);
   return lines.join('\n');
 }
 
+// An assigned issue has an owner watching it, so it hears about every upstream
+// change regardless of triage. Closed issues are done with, so they count as unassigned.
+async function assigneesOf(issue) {
+  if (!token || !repo) return [];
+  const { state, assignees = [] } = await gh('GET', `/issues/${issue}`);
+  return state === 'open' ? assignees.map(a => a.login) : [];
+}
+
+// Only a transition counts, so a topic without a recorded status never pings as shipped.
+const isShipped = status => /enabled by default|shipped/i.test(status ?? '');
+const topics = await readTopics();
+function shippedNow(c) {
+  const prev = topics[`${c.source}:${c.id}`]?.chrome;
+  return prev != null && !isShipped(prev) && isShipped(c.browsers?.chrome);
+}
+
 const actions = [];
+const picked = new Set();
 for (const pick of picks) {
   const c = byRef.get(pick.ref);
   if (!c) continue; // pick must correspond to a fetched candidate
+  picked.add(pick.ref);
   const labels = ['triage', `impact:${pick.impact}`, `urgency:${pick.urgency}`];
 
   if (c.prevIssue == null) {
     actions.push({ kind: 'create', pick, c, labels });
-  } else if (UPDATE_TIERS.has(pick.impact)) {
-    actions.push({ kind: 'update', pick, c, issue: c.prevIssue });
+    continue;
+  }
+  const assignees = await assigneesOf(c.prevIssue);
+  if (assignees.length || UPDATE_TIERS.has(pick.impact)) {
+    actions.push({ kind: 'update', pick, c, issue: c.prevIssue, assignees, shipped: shippedNow(c) });
   } else {
     actions.push({ kind: 'skip-update', pick, c, issue: c.prevIssue });
   }
+}
+
+// Changed topics triage left out still reach their assignees.
+for (const c of candidates) {
+  if (!c.changed || c.prevIssue == null || picked.has(`${c.source}:${c.id}`)) continue;
+  const assignees = await assigneesOf(c.prevIssue);
+  if (assignees.length) actions.push({ kind: 'update', c, issue: c.prevIssue, assignees, shipped: shippedNow(c) });
 }
 
 // Persist the ledger: keep every existing topic, refresh fingerprints for
@@ -131,12 +164,17 @@ async function writeLedger(created) {
     const ref = `${c.source}:${c.id}`;
     const prev = topics[ref] ?? {};
     topics[ref] = { issue: prev.issue ?? null, fingerprint: c.fingerprint, impact: prev.impact ?? null };
+    if (c.browsers?.chrome) topics[ref].chrome = c.browsers.chrome;
   }
   for (const { pick, issue } of created) {
     topics[pick.ref] = { ...topics[pick.ref], issue, impact: pick.impact };
   }
   await writeFile(join(root, 'state/topics.json'), JSON.stringify(topics, null, 2));
   console.log(`topics.json now tracks ${Object.keys(topics).length} topic(s).`);
+}
+
+function pingNote(a) {
+  return (a.shipped ? ', shipped' : '') + (a.assignees?.length ? `, cc ${a.assignees.map(x => `@${x}`).join(' ')}` : '');
 }
 
 if (actions.length === 0) {
@@ -150,9 +188,10 @@ if (dryRun) {
   console.log(`Would apply ${actions.length} action(s):\n`);
   for (const a of actions) {
     if (a.kind === 'create') console.log(`  + CREATE  #new   [${a.labels.join(', ')}]  ${a.pick.title}`);
-    else if (a.kind === 'update') console.log(`  ~ COMMENT #${a.issue}        (+updated)  ${a.pick.title}`);
+    else if (a.kind === 'update') console.log(`  ~ COMMENT #${a.issue}        (+updated${pingNote(a)})  ${a.pick?.title ?? a.c.title}`);
     else console.log(`  · SKIP    #${a.issue}   (watch tier, file-once)  ${a.pick.title}`);
   }
+  if (!token || !repo) console.log('\n(no GH_TOKEN/GITHUB_REPOSITORY, so assignees were not looked up)');
   console.log('\n(dry run — no issues created or updated, state/topics.json left unchanged)');
   process.exit(0);
 }
@@ -175,13 +214,13 @@ for (const a of actions) {
     created.push({ pick: a.pick, issue: issue.number });
     console.log(`Created #${issue.number}: ${issue.html_url}`);
   } else if (a.kind === 'update') {
-    await gh('POST', `/issues/${a.issue}/comments`, { body: updateComment(a.c, a.pick) });
+    await gh('POST', `/issues/${a.issue}/comments`, { body: updateComment(a.c, a.pick, a) });
     try {
       await gh('POST', `/issues/${a.issue}/labels`, { labels: ['updated'] });
     } catch {
       /* label may already be present */
     }
-    console.log(`Commented on #${a.issue} (${a.pick.impact}).`);
+    console.log(`Commented on #${a.issue} (${a.pick?.impact ?? 'assigned'}${pingNote(a)}).`);
   } else {
     console.log(`Skipped update for #${a.issue} (watch tier).`);
   }

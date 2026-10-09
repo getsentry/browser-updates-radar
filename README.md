@@ -16,6 +16,7 @@ sources.config.mjs ──► fetch-candidates ──► triage (Claude) ──�
 3. **publish** — one issue per topic, keyed deterministically by `source:id` via the ledger:
    - **new topic** → creates an issue labeled `triage`, `impact:<x>`, `urgency:<y>`, with a hidden `<!-- radar-key: source:id -->` marker.
    - **changed topic** that already has an issue → adds an "updated" comment + label so the topic accrues its history in place (limited to `breaking`/`opportunity`; `watch` items are file-once).
+   - **assigned issue** whose topic changed → always gets the update comment, even if triage skipped it or picked it as `watch`, and the comment @mentions the assignees. If Chrome's status just moved to "Enabled by default", the comment leads with a 🚀 shipping line.
    - then commits the refreshed ledger.
 
 The ledger — not GitHub search — is the dedup authority, so two runs can never open two issues for the same topic. Triage the relevant set with the `triage` label, then re-prioritize with your own labels; that's the intended workflow.
