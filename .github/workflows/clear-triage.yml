@@ -1,0 +1,26 @@
+name: Clear triage label
+
+# A human reply or closing the issue means someone has looked at it, so it no
+# longer needs triage.
+on:
+  issue_comment:
+    types: [created]
+  issues:
+    types: [closed]
+
+permissions:
+  issues: write
+
+jobs:
+  clear:
+    if: >-
+      !github.event.issue.pull_request &&
+      contains(github.event.issue.labels.*.name, 'triage') &&
+      (github.event_name == 'issues' || github.event.comment.user.type != 'Bot')
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: gh issue edit "$ISSUE" --remove-label triage
