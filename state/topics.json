@@ -614,7 +614,7 @@
   },
   "chromestatus:5178263526834176": {
     "issue": null,
-    "fingerprint": "1uzx9z9",
+    "fingerprint": "1uaq46f",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -660,13 +660,13 @@
   },
   "chromestatus:5183481574850560": {
     "issue": null,
-    "fingerprint": "lmynz0",
+    "fingerprint": "1jouaw1",
     "impact": null,
     "chrome": "In development"
   },
   "chromestatus:5152834368700416": {
     "issue": null,
-    "fingerprint": "1f55xvu",
+    "fingerprint": "yusdam",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -929,7 +929,7 @@
   },
   "chromestatus:6427766428925952": {
     "issue": null,
-    "fingerprint": "vxx4ig",
+    "fingerprint": "12e3t5z",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -1010,13 +1010,13 @@
   },
   "chromestatus:6207138742534144": {
     "issue": null,
-    "fingerprint": "ke2ty8",
+    "fingerprint": "102q7s4",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5169798320357376": {
     "issue": null,
-    "fingerprint": "1ohon59",
+    "fingerprint": "1mmfoz6",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -1028,7 +1028,7 @@
   },
   "chromestatus:5174965228929024": {
     "issue": null,
-    "fingerprint": "pgnpkj",
+    "fingerprint": "i151ew",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -1070,7 +1070,7 @@
   },
   "chromestatus:4860330806214656": {
     "issue": null,
-    "fingerprint": "dy7rxr",
+    "fingerprint": "x820ap",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -1078,5 +1078,23 @@
     "issue": 43,
     "fingerprint": "gsji31",
     "impact": "breaking"
+  },
+  "chromestatus:5167864517623808": {
+    "issue": null,
+    "fingerprint": "1ddmv3w",
+    "impact": null,
+    "chrome": "Proposed"
+  },
+  "chromestatus:5091965583622144": {
+    "issue": null,
+    "fingerprint": "1d4ue08",
+    "impact": null,
+    "chrome": "Proposed"
+  },
+  "chromestatus:5144333908049920": {
+    "issue": null,
+    "fingerprint": "1821mg3",
+    "impact": null,
+    "chrome": "Proposed"
   }
 }
