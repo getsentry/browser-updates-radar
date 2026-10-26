@@ -333,7 +333,7 @@
   },
   "chromestatus:5068277495758848": {
     "issue": null,
-    "fingerprint": "1s8y3im",
+    "fingerprint": "1n0dwp7",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -349,7 +349,7 @@
   },
   "chromestatus:5054329641893888": {
     "issue": 21,
-    "fingerprint": "1t8ngoc",
+    "fingerprint": "1ts62m2",
     "impact": "watch",
     "chrome": "Proposed"
   },
@@ -385,7 +385,7 @@
   },
   "chromestatus:4709671889534976": {
     "issue": 7,
-    "fingerprint": "1ms67do",
+    "fingerprint": "kp1k49",
     "impact": "watch",
     "chrome": "Proposed"
   },
@@ -491,8 +491,9 @@
   },
   "chromestatus:5811907077472256": {
     "issue": null,
-    "fingerprint": "1pozz2u",
-    "impact": null
+    "fingerprint": "1fblwsg",
+    "impact": null,
+    "chrome": "Proposed"
   },
   "chromestatus:6594955352080384": {
     "issue": 19,
@@ -577,8 +578,9 @@
   },
   "chromestatus:6185007701557248": {
     "issue": null,
-    "fingerprint": "8barrf",
-    "impact": null
+    "fingerprint": "15i3ygt",
+    "impact": null,
+    "chrome": "Proposed"
   },
   "chromestatus:5387465121726464": {
     "issue": 22,
@@ -603,7 +605,7 @@
   },
   "chromestatus:6210300985606144": {
     "issue": 25,
-    "fingerprint": "1wg5u3n",
+    "fingerprint": "b1evou",
     "impact": "watch",
     "chrome": "Proposed"
   },
@@ -614,7 +616,7 @@
   },
   "chromestatus:5178263526834176": {
     "issue": null,
-    "fingerprint": "1uaq46f",
+    "fingerprint": "wyxfye",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -660,13 +662,13 @@
   },
   "chromestatus:5183481574850560": {
     "issue": null,
-    "fingerprint": "1jouaw1",
+    "fingerprint": "1opcvwe",
     "impact": null,
     "chrome": "In development"
   },
   "chromestatus:5152834368700416": {
     "issue": null,
-    "fingerprint": "yusdam",
+    "fingerprint": "cfll1n",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -724,7 +726,7 @@
   },
   "chromestatus:5152215540039680": {
     "issue": null,
-    "fingerprint": "x5tvbl",
+    "fingerprint": "vkpepc",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -751,7 +753,7 @@
   },
   "chromestatus:5100672946143232": {
     "issue": null,
-    "fingerprint": "1ehznzl",
+    "fingerprint": "vhi03y",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -772,7 +774,7 @@
   },
   "chromestatus:5075532483657728": {
     "issue": null,
-    "fingerprint": "odexlz",
+    "fingerprint": "1kjq3qk",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -820,13 +822,13 @@
   },
   "chromestatus:5168674259468288": {
     "issue": null,
-    "fingerprint": "xjeczd",
+    "fingerprint": "1f5uixs",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5422782593761280": {
     "issue": null,
-    "fingerprint": "2rezzh",
+    "fingerprint": "it17gq",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -843,7 +845,7 @@
   },
   "chromestatus:5112398709129216": {
     "issue": 34,
-    "fingerprint": "l5f3io",
+    "fingerprint": "1le8099",
     "impact": "watch",
     "chrome": "Proposed"
   },
@@ -854,7 +856,7 @@
   },
   "chromestatus:6294595288825856": {
     "issue": null,
-    "fingerprint": "1yh1cjc",
+    "fingerprint": "xxhs9j",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -876,13 +878,13 @@
   },
   "chromestatus:4882016087703552": {
     "issue": null,
-    "fingerprint": "bnqy3d",
+    "fingerprint": "1jtgcu0",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5107682460696576": {
     "issue": null,
-    "fingerprint": "b8xj0i",
+    "fingerprint": "xs7j4x",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -894,7 +896,7 @@
   },
   "chromestatus:5136856479039488": {
     "issue": null,
-    "fingerprint": "1f8z6jm",
+    "fingerprint": "1h86pdt",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -905,37 +907,37 @@
   },
   "chromestatus:5069584943153152": {
     "issue": null,
-    "fingerprint": "19y16ja",
+    "fingerprint": "unsvat",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5087964794322944": {
     "issue": null,
-    "fingerprint": "tnb54j",
+    "fingerprint": "1409xxu",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5136123851571200": {
     "issue": null,
-    "fingerprint": "9h6wr2",
+    "fingerprint": "ni1krx",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5138797158334464": {
     "issue": null,
-    "fingerprint": "1w45ts3",
+    "fingerprint": "nk1d2a",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:6427766428925952": {
     "issue": null,
-    "fingerprint": "12e3t5z",
+    "fingerprint": "1m3z2tg",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:4886345347629056": {
     "issue": null,
-    "fingerprint": "fx30id",
+    "fingerprint": "1c8mpna",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -946,107 +948,109 @@
   },
   "chromestatus:5148774971342848": {
     "issue": null,
-    "fingerprint": "caqb9p",
-    "impact": null
+    "fingerprint": "1gcvwrx",
+    "impact": null,
+    "chrome": "Proposed"
   },
   "chromestatus:5183354944225280": {
     "issue": null,
-    "fingerprint": "brhlnb",
-    "impact": null
+    "fingerprint": "1pwqcqr",
+    "impact": null,
+    "chrome": "Proposed"
   },
   "chromestatus:5094058497277952": {
     "issue": null,
-    "fingerprint": "h1ox2g",
+    "fingerprint": "1s1g7c5",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5109912169480192": {
     "issue": null,
-    "fingerprint": "7fsfpf",
+    "fingerprint": "a0fche",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5172548013916160": {
     "issue": 41,
-    "fingerprint": "qpqkbp",
+    "fingerprint": "16uv6mc",
     "impact": "watch",
     "chrome": "In development"
   },
   "chromestatus:5171478175809536": {
     "issue": 39,
-    "fingerprint": "gkhofx",
+    "fingerprint": "3xj8ik",
     "impact": "opportunity",
     "chrome": "Proposed"
   },
   "chromestatus:5086608215900160": {
     "issue": null,
-    "fingerprint": "2ry839",
+    "fingerprint": "janmxe",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5068439115923456": {
     "issue": 40,
-    "fingerprint": "1fby24e",
+    "fingerprint": "16tuohh",
     "impact": "watch",
     "chrome": "Proposed"
   },
   "chromestatus:5261280285949952": {
     "issue": null,
-    "fingerprint": "1icoju1",
+    "fingerprint": "mt72o8",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5069051687731200": {
     "issue": null,
-    "fingerprint": "rxuyxa",
+    "fingerprint": "1o614il",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5155080092385280": {
     "issue": null,
-    "fingerprint": "83lcon",
+    "fingerprint": "esap5i",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:6207138742534144": {
     "issue": null,
-    "fingerprint": "102q7s4",
+    "fingerprint": "ulit39",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5169798320357376": {
     "issue": null,
-    "fingerprint": "1mmfoz6",
+    "fingerprint": "1kuy2q9",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5657801797009408": {
     "issue": 44,
-    "fingerprint": "p3yuo2",
+    "fingerprint": "29dy9",
     "impact": "watch",
     "chrome": "Proposed"
   },
   "chromestatus:5174965228929024": {
     "issue": null,
-    "fingerprint": "i151ew",
+    "fingerprint": "pi44rp",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5109900936085504": {
     "issue": null,
-    "fingerprint": "1b52e7t",
+    "fingerprint": "1qp85li",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5179186249465856": {
     "issue": null,
-    "fingerprint": "1cv71th",
+    "fingerprint": "vxy8q8",
     "impact": null,
     "chrome": "In developer trial (Behind a flag)"
   },
   "chromestatus:5195340595724288": {
     "issue": 42,
-    "fingerprint": "1d4106l",
+    "fingerprint": "17mtlhq",
     "impact": "breaking",
     "chrome": "Proposed"
   },
@@ -1058,19 +1062,19 @@
   },
   "chromestatus:5089961022980096": {
     "issue": null,
-    "fingerprint": "1by8pto",
+    "fingerprint": "iewqnt",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5180947573112832": {
     "issue": null,
-    "fingerprint": "165kg52",
+    "fingerprint": "1hdg8jx",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:4860330806214656": {
     "issue": null,
-    "fingerprint": "x820ap",
+    "fingerprint": "tmjq3i",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -1087,14 +1091,65 @@
   },
   "chromestatus:5091965583622144": {
     "issue": null,
-    "fingerprint": "1d4ue08",
+    "fingerprint": "n6t62v",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5144333908049920": {
     "issue": null,
-    "fingerprint": "1821mg3",
+    "fingerprint": "12ku7r8",
     "impact": null,
     "chrome": "Proposed"
+  },
+  "chromestatus:5188639100370944": {
+    "issue": null,
+    "fingerprint": "1po1m52",
+    "impact": null,
+    "chrome": "Proposed"
+  },
+  "chromestatus:6208452397498368": {
+    "issue": null,
+    "fingerprint": "1vip7t1",
+    "impact": null,
+    "chrome": "Enabled by default"
+  },
+  "chromestatus:5123480866783232": {
+    "issue": null,
+    "fingerprint": "1w0q6ee",
+    "impact": null,
+    "chrome": "Enabled by default"
+  },
+  "chromestatus:4787972240179200": {
+    "issue": null,
+    "fingerprint": "1u114me",
+    "impact": null,
+    "chrome": "Proposed"
+  },
+  "chromestatus:5120203192139776": {
+    "issue": null,
+    "fingerprint": "10h3n9",
+    "impact": null,
+    "chrome": "Proposed"
+  },
+  "chromestatus:5235261159112704": {
+    "issue": null,
+    "fingerprint": "x4jzss",
+    "impact": null,
+    "chrome": "Proposed"
+  },
+  "webkit:https://webkit.org/blog/18486/webkit-features-for-safari-27-1/": {
+    "issue": null,
+    "fingerprint": "6scfq",
+    "impact": null
+  },
+  "webkit:https://webkit.org/blog/18482/release-notes-for-safari-technology-preview-255/": {
+    "issue": 46,
+    "fingerprint": "h8vryn",
+    "impact": "breaking"
+  },
+  "webkit:https://webkit.org/blog/18438/blocking-identity-resolution-infrastructure/": {
+    "issue": 45,
+    "fingerprint": "17yeddr",
+    "impact": "breaking"
   }
 }
