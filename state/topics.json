@@ -696,8 +696,9 @@
   },
   "chromestatus:5172464636133376": {
     "issue": null,
-    "fingerprint": "z3imdq",
-    "impact": null
+    "fingerprint": "1pf6xk5",
+    "impact": null,
+    "chrome": "Enabled by default"
   },
   "webkit:https://webkit.org/blog/18191/release-notes-for-safari-technology-preview-250/": {
     "issue": null,
@@ -1032,7 +1033,7 @@
   },
   "chromestatus:5174965228929024": {
     "issue": null,
-    "fingerprint": "pi44rp",
+    "fingerprint": "1q4yrxj",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -1097,13 +1098,13 @@
   },
   "chromestatus:5144333908049920": {
     "issue": null,
-    "fingerprint": "12ku7r8",
+    "fingerprint": "vj80r0",
     "impact": null,
     "chrome": "Proposed"
   },
   "chromestatus:5188639100370944": {
     "issue": null,
-    "fingerprint": "1po1m52",
+    "fingerprint": "1kp5gt6",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -1133,7 +1134,7 @@
   },
   "chromestatus:5235261159112704": {
     "issue": null,
-    "fingerprint": "x4jzss",
+    "fingerprint": "15nxt5m",
     "impact": null,
     "chrome": "Proposed"
   },
@@ -1150,6 +1151,29 @@
   "webkit:https://webkit.org/blog/18438/blocking-identity-resolution-infrastructure/": {
     "issue": 45,
     "fingerprint": "17yeddr",
+    "impact": "breaking"
+  },
+  "chromestatus:5095781286674432": {
+    "issue": 48,
+    "fingerprint": "1t4snof",
+    "impact": "watch",
+    "chrome": "Proposed"
+  },
+  "chromestatus:5079784523694080": {
+    "issue": null,
+    "fingerprint": "g22kh",
+    "impact": null,
+    "chrome": "Proposed"
+  },
+  "chromestatus:5158277221580800": {
+    "issue": 49,
+    "fingerprint": "zc5rde",
+    "impact": "opportunity",
+    "chrome": "Proposed"
+  },
+  "webkit:https://webkit.org/blog/18515/webkit-features-for-safari-27-2/": {
+    "issue": 47,
+    "fingerprint": "1ay391h",
     "impact": "breaking"
   }
 }
